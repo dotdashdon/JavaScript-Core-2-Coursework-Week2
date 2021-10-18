@@ -1,13 +1,61 @@
+// 
+//  
+
+let list = document.getElementById("todo-list");
+
+
 function populateTodoList(todos) {
-  let list = document.getElementById("todo-list");
+list.innerHTML =" ";
+  todos.map(taskToLI);
   // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
 }
+function todoToLi(todo){
 
+let li = document.createElement("li");
+li.classList = "list-group-item d-flex justify-content-between align-items-center";
+li.innerText = todo.task;
+if (todo.completed) {
+  li.setAttribute("style","text-decoration: line-through" );
+}
+let span = document.createElement('span');
+span.classList = 'badge bg-primary rounded-pill';
+let i1 = document.createElement('i');
+i1.classList = "fa fa-check";
+i1.setAttribute("aria-hidden", true);
+let i2 = document.createElement('i');
+i2.classList = "fa fa-trash";
+i2.setAttribute("aria-hidden", true);
+span.appendChild(i1);
+span.appendChild(i2);
+li.appendChild(span);
+list.appendChild(li);
+
+
+
+
+
+// let li = ` <li
+//                 class="list-group-item d-flex justify-content-between align-items-center"
+//               >
+//   ${task.completed ?  'style="text-decoration: line-through"' :  ""}
+//                 ${task.task}
+//                 <span class="badge bg-primary rounded-pill">
+//                   <!-- each of these <i> tags will need an event listener when we create them in Javascript -->
+//                   <i class="fa fa-check" aria-hidden="true"></i>
+//                   <i class="fa fa-trash" aria-hidden="true"></i>
+//                 </span>
+//               </li>`;
+//               list.innerHTML += li;
+}
+
+
+//^ can either create elements 
 // These are the same todos that currently display in the HTML
 // You will want to remove the ones in the current HTML after you have created them using JavaScript
 let todos = [
   { task: "Wash the dishes", completed: false },
   { task: "Do the shopping", completed: false },
+  { task: "Do homework", completed: false}, 
 ];
 
 populateTodoList(todos);
